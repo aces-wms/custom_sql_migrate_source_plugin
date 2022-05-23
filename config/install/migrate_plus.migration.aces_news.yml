@@ -1,12 +1,10 @@
 id: aces_news
 label: Migrate News from Drupal 8 to Drupal 9
 migration_group: aces_news
-migration_dependencies:
-  required: {}
-  optional: {}
+migration_dependencies: {}
 source:
   plugin: custom_sql_query
-  key: oldnews
+  key: migrate
   keys:
     - id
   sql_query: 'SELECT news.id,
@@ -22,7 +20,7 @@ source:
                        news.news_category
                   FROM news'
 destination:
-  plugin: 'entity:node'
+  plugin: entity:node
   default_bundle: news
 
 process:
@@ -82,6 +80,4 @@ process:
       entity_type: taxonomy_term
       bundle: tags
       value_key: name
-
-
 

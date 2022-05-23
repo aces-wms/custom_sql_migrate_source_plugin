@@ -17,6 +17,9 @@ function aces_news_migration_install() {
  */
 function aces_news_migration_uninstall() {
   \Drupal::messenger()->addStatus(__FUNCTION__);
+  $connection = Database::getConnection();
+  $connection->query("DELETE FROM {config} WHERE name LIKE 'migrate_plus.migration.aces_news%'");
+  drupal_flush_all_caches();
 }
 
 /**
