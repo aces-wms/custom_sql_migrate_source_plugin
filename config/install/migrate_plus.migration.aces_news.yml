@@ -11,18 +11,21 @@ source:
   key: migrate
   keys:
     - id
-  sql_query: 'SELECT news.id,
-                       news.title,
-                       news.body,
-                       news.summary,
-                       news.published,
-                       news.created_at,
-                       news.updated_at,
-                       news.updated_by,
-                       news.publication_date,
-                       news.news_author_ref,
-                       news.news_category
-                  FROM news'
+  sql_query: 'SELECT ln.nid, af.entity_id
+              FROM lamp.node ln
+              LEFT JOIN node__field_news_author_ref af
+              ON ln.nid = af.entity_id'
+#                       news.title,
+#                       news.body,
+#                       news.summary,
+#                       news.published,
+#                       news.created_at,
+#                       news.updated_at,
+#                       news.updated_by,
+#                       news.publication_date,
+#                       news.news_author_ref,
+#                       news.news_category
+#                  FROM news'
 process:
   type:
     plugin: default_value
