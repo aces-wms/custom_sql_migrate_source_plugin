@@ -23,10 +23,6 @@ source:
                        news.news_author_ref,
                        news.news_category
                   FROM news'
-destination:
-  plugin: entity:node
-  default_bundle: news
-
 process:
   type:
     plugin: default_value
@@ -84,4 +80,6 @@ process:
       entity_type: taxonomy_term
       bundle: tags
       value_key: name
-
+destination:
+  plugin: 'entity:node'
+  default_bundle: news
