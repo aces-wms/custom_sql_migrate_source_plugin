@@ -2,6 +2,10 @@ id: aces_news
 label: Migrate News from Drupal 8 to Drupal 9
 migration_group: aces_news
 migration_dependencies: {}
+dependencies:
+  enforced:
+    module:
+      - aces_news_migration
 source:
   plugin: custom_sql_query
   key: migrate
