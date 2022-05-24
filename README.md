@@ -10,3 +10,16 @@
 - Test the connection
 
       lando ssh -s database -c "mysql -ulamp -plamp -h database.NAME.internal"
+
+Example connection:
+
+    $databases['migrate']['default'] = array (
+      'database' => 'lamp',
+      'username' => 'lamp',
+      'password' => 'lamp',
+      'prefix' => '',
+      'host' => 'database.acescopy.internal',
+      'port' => '',
+      'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+      'driver' => 'mysql',
+    );
