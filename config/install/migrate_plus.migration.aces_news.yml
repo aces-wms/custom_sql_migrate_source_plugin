@@ -14,7 +14,11 @@ source:
   sql_query: "SELECT ln.nid, ln.type, fd.title, nb.body_value, nb.body_summary, nb.body_format FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id WHERE ln.type='news' ORDER BY ln.nid ASC"
 process:
   title: title
-  body: body_value
+  'body/value': body_value
+  'body/summary': body_summary
+  'body/format':
+    plugin: default_value
+    default_value: 'basic_html'
 destination:
   plugin: entity:node
   default_bundle: news
