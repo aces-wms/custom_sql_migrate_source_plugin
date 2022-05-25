@@ -11,17 +11,12 @@ source:
   key: migrate
   keys:
     - nid
-  sql_query: 'SELECT ln.nid, fd.title, nb.body_value
-              FROM lamp.node ln
-              LEFT JOIN lamp.node_field_data fd
-              ON ln.nid = fd.nid
-              LEFT JOIN lamp.node__body nb
-              ON ln.nid = nb.entity_id'
+  sql_query: "SELECT ln.nid, ln.type, fd.title, nb.body_value, nb.body_summary, nb.body_format FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id WHERE ln.type='news' ORDER BY ln.nid ASC"
 process:
   title: title
   body: body_value
 destination:
-  plugin: 'entity:node'
+  plugin: entity:node
   default_bundle: news
 #  created:
 #    plugin: format_date
