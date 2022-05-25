@@ -1,87 +1,72 @@
 id: aces_news
 label: Migrate News from Drupal 8 to Drupal 9
 migration_group: aces_news
-migration_dependencies:
-  required: {}
-  optional: {}
+migration_dependencies: {}
+dependencies:
+  enforced:
+    module:
+      - aces_news_migration
 source:
   plugin: custom_sql_query
-  key: oldnews
+  key: migrate
   keys:
-    - id
-  sql_query: 'SELECT news.id,
-                       news.title,
-                       news.body,
-                       news.summary,
-                       news.published,
-                       news.created_at,
-                       news.updated_at,
-                       news.updated_by,
-                       news.publication_date,
-                       news.news_author_ref,
-                       news.news_category
-                  FROM news'
-destination:
-  plugin: 'entity:node'
-  default_bundle: news
-
+    - nid
+  sql_query: "SELECT ln.nid, ln.type, fd.title, nb.body_value, nb.body_summary, nb.body_format FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id WHERE ln.type='news' ORDER BY ln.nid ASC"
 process:
-  type:
-    plugin: default_value
-    default_value: news
-  nid:
-    plugin: default_value
-    default_value: news
   title: title
-  field_if_date:
-    plugin: format_date
-    from_format: 'Y-m-d H:i:s'
-    to_format: 'Y-m-d\TH:i:s'
-    source: publication_date
-  field_if_author:
-    plugin: get
-    source: author
-    'body/value': text
-    'body/summary': summary
-    'body/format':
-      plugin: default_value
-      default_value: 'basic_html'
-  created:
-    plugin: format_date
-    from_format: 'Y-m-d H:i:s'
-    to_format: 'U'
-    source: created_at
-  changed:
-    plugin: format_date
-    from_format: 'Y-m-d H:i:s'
-    to_format: 'U'
-    source: updated_at
-  status:
-    plugin: get
-    source: published
-  uid:
-    plugin: entity_generate
-    source: updated_by
-    value_key: name
-    entity_type: user
-    ignore_case: true
-    default_values:
-      email:
-      plugin: concat
-      source:
-        - updated_by
-        - "@illinois.edu"
-  field_tags:
-    - plugin: skip_on_empty
-      source: news_category
-      method: process
-      message: 'No categories listed.'
-    - plugin: explode
-      delimiter: '	'
-    - plugin: entity_generate
-      entity_type: taxonomy_term
-      bundle: tags
-      value_key: name
-
-
-
+  body: body_value
+destination:
+  plugin: entity:node
+  default_bundle: news
+#  created:
+#    plugin: format_date
+#    from_format: 'U'
+#    to_format: 'U'
+#    source: fd.created
+#  changed:
+#    plugin: format_date
+#    from_format: 'U'
+#    to_format: 'U'
+#    source: fd.changed
+#  status:
+#    plugin: get
+#    source: fd.status
+#  nid:
+#    plugin: default_value
+#    default_value: news
+#  uid:
+#    plugin: entity_generate
+#    source: updated_by
+#    value_key: name
+#    entity_type: user
+#    ignore_case: true
+#    default_values:
+#      email:
+#      plugin: concat
+#      source:
+#        - updated_by
+#        - "@illinois.edu"
+#  field_tags:
+#    - plugin: skip_on_empty
+#      source: news_category
+#      method: process
+#      message: 'No categories listed.'
+#    - plugin: explode
+#      delimiter: '	'
+#    - plugin: entity_generate
+#      entity_type: taxonomy_term
+#      bundle: tags
+#      value_key: name
+#  field_if_date:
+#    plugin: format_date
+#    from_format: 'U'
+#    to_format: 'U'
+#    source: fd.changed
+#  field_if_author:
+#    plugin: get
+#    source: author
+#    'body/value': text
+#    'body/summary': summary
+#    'body/format':
+#      plugin: default_value
+#      default_value: 'basic_html'
