@@ -32,19 +32,14 @@ process:
       plugin: explode
       delimiter: '@'
       source: field_author_email_address_value
-      limit: 1
+      limit: 2
   uid:
     plugin: entity_generate
     source: '@uid_input'
     value_key: name
     entity_type: user
     ignore_case: true
-    default_values:
-      email:
-        plugin: concat
-        source:
-          - '@uid_input'
-          - "@illinois.edu"
+    mail: field_author_email_address_value
 destination:
   plugin: entity:node
   default_bundle: news
