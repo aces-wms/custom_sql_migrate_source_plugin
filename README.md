@@ -27,3 +27,9 @@ Example connection:
 SQL Query Example:
 
     SELECT ln.nid, ln.type, fd.title, nb.body_value, nb.body_summary, nb.body_format FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id WHERE ln.type='news' ORDER BY ln.nid ASC
+
+Migration information:
+
+    lando drush mim aces_news --limit=20
+    lando drush mr aces_news
+    lando drush pmu aces_news_migration -y && lando drush pm:enable aces_news_migration -y
