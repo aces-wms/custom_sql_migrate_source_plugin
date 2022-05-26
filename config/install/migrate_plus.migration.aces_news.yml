@@ -39,11 +39,7 @@ process:
     value_key: name
     entity_type: user
     ignore_case: true
-    mail:
-      plugin: concat
-      source:
-        - '@uid_input'
-        - "@illinois.edu"
+    mail: field_author_email_address_value
 destination:
   plugin: entity:node
   default_bundle: news
