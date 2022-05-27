@@ -11,7 +11,7 @@ source:
   key: migrate
   keys:
     - nid
-  sql_query: "SELECT ln.nid, ln.type, fd.title, nb.body_value, nb.body_summary, nb.body_format, fa.field_news_author_ref_target_id, ea.field_author_email_address_value FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id INNER JOIN node__field_news_author_ref fa ON ln.nid = fa.entity_id INNER JOIN node__field_author_email_address ea ON ea.entity_id = fa.field_news_author_ref_target_id WHERE ln.type='news' ORDER BY ln.nid ASC"
+  sql_query: "SELECT ln.nid, ln.type, fd.title, fd.created, fd.status, fd.changed, nb.body_value, nb.body_summary, nb.body_format, fa.field_news_author_ref_target_id, ea.field_author_email_address_value, ot.name FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id INNER JOIN node__field_news_author_ref fa ON ln.nid = fa.entity_id INNER JOIN node__field_author_email_address ea ON ea.entity_id = fa.field_news_author_ref_target_id INNER JOIN node__field_news_category nc ON nc.entity_id = ln.nid INNER JOIN old_01b3d4taxonomy_term_field_data ot ON ot.tid = nc.field_news_category_target_id WHERE ln.type='news' ORDER BY ln.nid ASC"
 process:
   title: title
   'body/value': body_value
@@ -40,40 +40,35 @@ process:
     entity_type: user
     ignore_case: true
     mail: field_author_email_address_value
+  created:
+    plugin: format_date
+    from_format: 'U'
+    to_format: 'U'
+    source: created
+  changed:
+    plugin: format_date
+    from_format: 'U'
+    to_format: 'U'
+    source: changed
+  status:
+    plugin: get
+    source: status
+  field_if_date:
+    plugin: format_date
+    from_format: 'U'
+    to_format: 'mm/dd/YY H:i:s A'
+    source: changed
+  field_tags:
+    plugin: entity_generate
+    entity_type: taxonomy_term
+    bundle: tags
+    source: name
 destination:
   plugin: entity:node
   default_bundle: news
-#  created:
-#    plugin: format_date
-#    from_format: 'U'
-#    to_format: 'U'
-#    source: fd.created
-#  changed:
-#    plugin: format_date
-#    from_format: 'U'
-#    to_format: 'U'
-#    source: fd.changed
-#  status:
-#    plugin: get
-#    source: fd.status
+
 #  nid:
 #    plugin: default_value
 #    default_value: news
 
-#  field_tags:
-#    - plugin: skip_on_empty
-#      source: news_category
-#      method: process
-#      message: 'No categories listed.'
-#    - plugin: explode
-#      delimiter: '	'
-#    - plugin: entity_generate
-#      entity_type: taxonomy_term
-#      bundle: tags
-#      value_key: name
-#  field_if_date:
-#    plugin: format_date
-#    from_format: 'U'
-#    to_format: 'U'
-#    source: fd.changed
 
