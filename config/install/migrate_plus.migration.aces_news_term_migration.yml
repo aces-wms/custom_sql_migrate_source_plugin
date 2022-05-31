@@ -1,5 +1,6 @@
 id: aces_news_term_migration
 label: 'ACES News term migration'
+migration_group: aces_news
 source:
   plugin: custom_sql_query
   key: migrate
@@ -12,8 +13,14 @@ source:
 process:
   tid: tid
   name: name
-  vid: vid
+  vid:
+    plugin: default_value
+    default_value: 'aces'
   status: status
 destination:
   plugin: entity:taxonomy_term
   default_bundle: tags
+dependencies:
+  enforced:
+    module:
+      - aces_news_migration

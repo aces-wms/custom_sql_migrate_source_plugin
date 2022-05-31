@@ -60,6 +60,11 @@ process:
     from_format: 'U'
     to_format: 'mm/dd/YY H:i:s A'
     source: changed
+  field_tags:
+    plugin: migration_lookup
+    migration: aces_news_term_migration
+    source: tid
+    value_key: name
 destination:
   plugin: entity:node
   default_bundle: news
