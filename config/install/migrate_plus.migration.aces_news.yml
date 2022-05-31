@@ -1,7 +1,9 @@
 id: aces_news
 label: Migrate News from Drupal 8 to Drupal 9
 migration_group: aces_news
-migration_dependencies: {}
+migration_dependencies:
+  required:
+    - aces_news_term_migration
 dependencies:
   enforced:
     module:
@@ -58,11 +60,6 @@ process:
     from_format: 'U'
     to_format: 'mm/dd/YY H:i:s A'
     source: changed
-  field_tags:
-    plugin: entity_generate
-    entity_type: taxonomy_term
-    bundle: tags
-    source: name
 destination:
   plugin: entity:node
   default_bundle: news

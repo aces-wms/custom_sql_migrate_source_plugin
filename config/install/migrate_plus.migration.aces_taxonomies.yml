@@ -1,0 +1,19 @@
+id: aces_news_term_migration
+label: 'ACES News term migration'
+source:
+  plugin: custom_sql_query
+  key: migrate
+  keys:
+    - tid
+  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM old_01b3d4taxonomy_term_field_data fd"
+  ids:
+    term_id:
+      type: integer
+process:
+  tid: tid
+  name: name
+  vid: vid
+  status: status
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: tags
