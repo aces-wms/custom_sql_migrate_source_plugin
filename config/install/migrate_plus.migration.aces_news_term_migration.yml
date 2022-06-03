@@ -6,20 +6,14 @@ source:
   key: migrate
   keys:
     - tid
-  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM old_01b3d4taxonomy_term_field_data fd"
-  ids:
-    term_id:
-      type: integer
+  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM old_01b3d4taxonomy_term_field_data fd WHERE fd.vid='aces'"
 process:
   tid: tid
   name: name
-  vid:
-    plugin: default_value
-    default_value: 'aces'
   status: status
 destination:
   plugin: entity:taxonomy_term
-  default_bundle: tags
+  default_bundle: aces
 dependencies:
   enforced:
     module:
