@@ -7,18 +7,18 @@ migration_dependencies:
   optional: {}
 source:
   plugin: custom_sql_query
-  key: oldnews
+  key: migrate
   keys:
     - nid
   sql_query: "SELECT ln.nid, fi.field_news_featured_image_target_id, fi.field_news_featured_image_alt, fi.field_news_featured_image_title, fm.uri FROM node ln LEFT JOIN node__field_news_featured_image fi ON fi.entity_id = ln.nid LEFT JOIN file_managed fm ON fi.field_news_featured_image_target_id = fm.fid WHERE ln.type='news' ORDER BY ln.nid ASC"
+  folder:
+    - plugin: explode
+      delimiter: 'files'
+      source: uri
+      limit: 2
   constants:
-    filefolder:
-      - plugin: explode
-        delimiter: 'files'
-        source: uri
-        limit: 2
     fileurl_1: 'https://aces.illinois.edu/sites/aces.illinois.edu/'
-    fileurl_2: '@filefolder'
+    fileurl_2: '@folder'
     pub: 'public://'
 destination:
   plugin: 'entity:node'
