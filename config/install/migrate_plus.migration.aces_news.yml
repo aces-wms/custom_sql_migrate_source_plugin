@@ -43,8 +43,6 @@ process:
     entity_type: user
     ignore_case: true
     mail: field_author_email_address_value
-      plugin: default_value
-        default_value: 'aces@illinois.edu'
   created:
     plugin: format_date
     from_format: 'U'

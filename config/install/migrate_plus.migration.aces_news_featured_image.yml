@@ -12,10 +12,14 @@ source:
     - nid
   sql_query: "SELECT ln.nid, fi.field_news_featured_image_target_id, fi.field_news_featured_image_alt, fi.field_news_featured_image_title, fm.uri FROM node ln LEFT JOIN node__field_news_featured_image fi ON fi.entity_id = ln.nid LEFT JOIN file_managed fm ON fi.field_news_featured_image_target_id = fm.fid WHERE ln.type='news' ORDER BY ln.nid ASC"
   constants:
-    fileurl_1: 'https://aces.illinois.edu/sites/aces.illinois.edu/files/hero642/aces-hero_2.jpg'
-    fileurl_2: '/original/'
-    pub: 'public://documents/Giving documents/giving-aged-aces-leadership-academy.pdf'
-    slash: '/'
+    filefolder:
+      - plugin: explode
+        delimiter: 'files'
+        source: uri
+        limit: 2
+    fileurl_1: 'https://aces.illinois.edu/sites/aces.illinois.edu/'
+    fileurl_2: '@filefolder'
+    pub: 'public://'
 destination:
   plugin: 'entity:node'
   default_bundle: news
@@ -36,23 +40,19 @@ process:
     source: '@nid'
     entity_type: node
     langcode: en
-    field_name: field_news_featured_image_title
+    field_name: title
   #build the url for the remote image. image is stored
   #under the id of the old news item
   remote_url:
     plugin: concat
     source:
       - constants/fileurl_1
-      - id
       - constants/fileurl_2
-      - image_mcb_file_name
   destination_name:
     plugin: concat
     source:
       - constants/pub
-      - id
-      - constants/slash
-      - image_mcb_file_name
+      - constants/fileurl_2
   #imports image from current mcb site and makes it a file entity.
   #drops images right into the public:// folder.
   image_download:
