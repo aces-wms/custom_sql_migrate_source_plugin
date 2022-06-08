@@ -1,0 +1,18 @@
+id: aces_news_node_terms
+label: 'Custom node migration with terms'
+migration_group: aces_news
+source:
+  plugin: custom_sql_query
+  key: default
+  keys:
+    - nid
+  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM  fd WHERE fd.vid='aces'"
+process:
+
+destination:
+  plugin: entity:node
+  default_bundle: news
+migration_dependencies:
+  required:
+    - aces_news_term_migration
+    - aces_news
