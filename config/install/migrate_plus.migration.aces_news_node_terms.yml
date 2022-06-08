@@ -6,13 +6,27 @@ source:
   key: default
   keys:
     - nid
-  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM  fd WHERE fd.vid='aces'"
-process:
-
-destination:
-  plugin: entity:node
-  default_bundle: news
+  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM taxonomy_term_field_data fd WHERE fd.vid='aces'"
 migration_dependencies:
   required:
-    - aces_news_term_migration
-    - aces_news
+    - custom_term_migration
+#process:
+#
+#destination:
+#  plugin: entity:node
+#  default_bundle: news
+#migration_dependencies:
+#  required:
+#    - aces_news_term_migration
+#    - aces_news
+#process:
+#  nid: page_id
+#  title: title
+#  field_tags:
+#    plugin: migration_lookup
+#    migration: custom_term_migration
+#    source: term_id
+#destination:
+#  plugin: entity:node
+#  default_bundle: article
+
