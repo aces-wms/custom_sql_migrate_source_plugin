@@ -20,7 +20,6 @@ function aces_news_migration_uninstall() {
   \Drupal::configFactory()->getEditable('taxonomy.vocabulary.aces')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration_group.aces_news')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration_group.aces_news_term_migration')->delete();
-  \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news_node_terms')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news_featured_image')->delete();
   drupal_flush_all_caches();
   \Drupal::messenger()->addStatus(__FUNCTION__);
