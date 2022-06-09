@@ -18,6 +18,7 @@ function aces_news_migration_install() {
 function aces_news_migration_uninstall() {
   \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news')->delete();
   \Drupal::configFactory()->getEditable('taxonomy.vocabulary.aces')->delete();
+  \Drupal::configFactory()->getEditable('pathauto.pattern.news_article')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration_group.aces_news')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration_group.aces_news_term_migration')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news_featured_image')->delete();
