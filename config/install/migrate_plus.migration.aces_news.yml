@@ -13,35 +13,24 @@ source:
   key: migrate
   keys:
     - nid
-  sql_query: "SELECT ln.nid, ln.type, fd.title, fd.created, fd.status, fd.changed, nb.body_value, nb.body_summary, nb.body_format, fa.field_news_author_ref_target_id, ea.field_author_email_address_value, ot.name FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id INNER JOIN node__field_news_author_ref fa ON ln.nid = fa.entity_id INNER JOIN node__field_author_email_address ea ON ea.entity_id = fa.field_news_author_ref_target_id INNER JOIN node__field_news_category nc ON nc.entity_id = ln.nid INNER JOIN old_01b3d4taxonomy_term_field_data ot ON ot.tid = nc.field_news_category_target_id WHERE ln.type='news' ORDER BY ln.nid ASC"
+  sql_query: "SELECT ln.nid, ln.type, ud.name, ud.mail, ud.uid, fd.title, fd.created, fd.changed, nb.body_value, nb.body_summary, nb.body_format, fa.field_news_author_ref_target_id, ea.field_author_email_address_value, fs.field_news_subheading_value, GROUP_CONCAT(DISTINCT ot.tid) AS tid, nf.title as author FROM node ln LEFT JOIN node_field_data fd ON ln.nid = fd.nid INNER JOIN node__body nb ON ln.nid = nb.entity_id LEFT JOIN node__field_news_author_ref fa ON ln.nid = fa.entity_id LEFT JOIN node__field_author_email_address ea ON ea.entity_id = fa.field_news_author_ref_target_id LEFT JOIN node__field_news_category nc ON nc.entity_id = ln.nid LEFT JOIN node__field_news_subheading fs ON fs.entity_id = ln.nid LEFT JOIN users_field_data ud ON fd.uid = ud.uid INNER JOIN old_01b3d4taxonomy_term_field_data ot ON ot.tid = nc.field_news_category_target_id LEFT JOIN node_field_data nf ON nf.nid = fa.field_news_author_ref_target_id WHERE ln.type='news' GROUP BY ln.nid ORDER BY ln.nid ASC"
 process:
   title: title
+  field_if_subtitle: field_news_subheading_value
   'body/value': body_value
   'body/summary': body_summary
   'body/format':
     plugin: default_value
     default_value: 'basic_html'
-  field_if_author:
-    plugin: get
-    source: author
-    'body/value': text
-    'body/summary': summary
-    'body/format':
-      plugin: default_value
-      default_value: 'basic_html'
-  uid_input:
-    -
-      plugin: explode
-      delimiter: '@'
-      source: field_author_email_address_value
-      limit: 2
   uid:
     plugin: entity_generate
-    source: '@uid_input'
-    value_key: name
     entity_type: user
+    source: name
+    bundle: user
+    value_key: name
     ignore_case: true
-    mail: field_author_email_address_value
+    values:
+      mail: mail
   created:
     plugin: format_date
     from_format: 'U'
@@ -61,9 +50,12 @@ process:
     to_format: 'Y-m-d\TH:i:s'
     source: created
   field_tags:
-    plugin: migration_lookup
-    migration: aces_news_term_migration
+    plugin: explode
     source: tid
+    delimiter: ','
+  field_if_author:
+    plugin: get
+    source: author
 destination:
   plugin: entity:node
   default_bundle: news
@@ -72,4 +64,18 @@ destination:
 #    plugin: default_value
 #    default_value: news
 
-
+#field_if_sponser:
+#field_if_related_people:
+#field_if_story_source:
+#field_if_meda_featured_image:
+#user email
+#ou can use the GROUP_CONCAT aggregate function
+  #
+  #SELECT manuscript.id, GROUP_CONCAT(manuscript_log.log_number)
+  #FROM manuscript INNER JOIN manuscript_log
+  #              ON manuscript.id = manuscript_log.manuscript_id
+  #GROUP BY manuscript.id
+#  SELECT person_id,
+#  GROUP_CONCAT(hobbies ORDER BY hobbies ASC SEPARATOR ', ')
+#  FROM peoples_hobbies
+#  GROUP BY person_id;

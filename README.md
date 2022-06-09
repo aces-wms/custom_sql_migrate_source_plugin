@@ -33,6 +33,7 @@ Migration information:
     lando drush mim aces_news --limit=20
     lando drush mr aces_news
     lando drush pmu aces_news_migration -y && lando drush pm:enable aces_news_migration -y
+    lando drush mst aces_news -y && lando drush mrs aces_news -y
 
 User creation:
 https://www.drupal.org/node/1349632
