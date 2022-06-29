@@ -64,15 +64,6 @@ process:
   field_if_meda_featured_image:
     plugin: migration_lookup
     migration: aces_news_files
-    no_stub: true
-    source: fid
-    #creates a media image entity from the downloaded image and attaches it to
-    #the field on the referencing node's featured image
-#  field_if_meda_featured_image:
-#    plugin: file_image_to_media
-#    source: '@image_download'
-#    bundle: image
-#    field: node__field_if_meda_featured_image
 destination:
   plugin: entity:node
   default_bundle: news
@@ -81,6 +72,5 @@ destination:
 #field_if_sponser:
 #field_if_related_people:
 #field_if_story_source:
-#field_if_meda_featured_image:
 #user email
 
