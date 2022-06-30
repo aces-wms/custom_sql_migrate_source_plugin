@@ -8,7 +8,7 @@ on:
   issue_comment:
     types: [created]
 env:
-  GITHUB_TOKEN: ${{ secrets.DRUPAL_TOKEN }}
+  DRUPAL_TOKEN: ${{ secrets.DRUPAL_TOKEN }}
 
 jobs:
   assign_one_project:
