@@ -19,9 +19,9 @@ jobs:
     name: "Add issue to project"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/add-to-project@RELEASE_VERSION
+      - uses: actions/add-to-project@v0.1.0
         with:
           project-url: https://github.com/orgs/aces-wms/projects/1
-          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           labeled: needs-triage
           label-operator: NOT
