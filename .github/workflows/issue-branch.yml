@@ -18,10 +18,12 @@ jobs:
   add-to-project:
     name: "Add issue to project"
     runs-on: ubuntu-latest
+    if: github.event.action == 'assigned'
     steps:
-      - uses: actions/add-to-project@v0.1.0
+      - name: add to project
+        uses: actions/add-to-project@v0.1.0
         with:
           project-url: https://github.com/orgs/aces-wms/projects/1
-          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
-          labeled: needs-triage
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          labeled: wontfix
           label-operator: NOT
