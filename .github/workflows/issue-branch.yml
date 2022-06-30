@@ -15,15 +15,3 @@ jobs:
         id: create-issue-branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  add-to-project:
-    name: "Add issue to project"
-    runs-on: ubuntu-latest
-    if: github.event.action == 'assigned'
-    steps:
-      - name: add to project
-        uses: actions/add-to-project@v0.1.0
-        with:
-          project-url: https://github.com/orgs/aces-wms/projects/1
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          labeled: wontfix
-          label-operator: NOT
