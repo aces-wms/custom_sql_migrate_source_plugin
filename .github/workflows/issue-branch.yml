@@ -1,5 +1,5 @@
 #To edit see https://github.com/marketplace/actions/create-issue-branch
-name: issues and project
+name: issues and project, add to drupal project
 
 on:
     issues:
@@ -15,3 +15,13 @@ jobs:
         id: create-issue-branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  add-to-project:
+    name: "Add issue to project"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@RELEASE_VERSION
+        with:
+          project-url: https://github.com/orgs/aces-wms/projects/1
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          labeled: needs-triage
+          label-operator: NOT
