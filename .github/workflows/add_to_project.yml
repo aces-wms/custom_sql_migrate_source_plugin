@@ -11,5 +11,5 @@ jobs:
       - uses: alex-page/github-project-automation-plus@v0.8.1
         with:
           project: 1
-          column: To Do
+          column: 'To Do'
           repo-token: ${{ secrets.MY_GITHUB_TOKEN }}
