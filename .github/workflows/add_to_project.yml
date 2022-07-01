@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.1
         with:
-          project: 1
+          project: Drupal
           column: 'To Do'
           repo-token: ${{ secrets.MY_GITHUB_TOKEN }}
