@@ -21,7 +21,7 @@ jobs:
         uses: leonsteinhaeuser/project-beta-automations@v1.2.1
         with:
           gh_token: ${{ secrets.MY_GITHUB_TOKEN}}
-          user: wrg20
+          #user: wrg20
           organization: aces-wms
           project_id: 1
           resource_node_id: ${{ github.event.issue.node_id }}
