@@ -12,4 +12,4 @@ jobs:
         with:
           project: Drupal
           column: To Do
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.MY_GITHUB_TOKEN }}
