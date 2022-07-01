@@ -5,10 +5,6 @@ on:
     types: [opened, labeled]
   pull_request:
     types: [opened, labeled]
-env:
-  GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-  ORGANIZATION: aces-wms
-  PROJECT_NUMBER: 1
 
 jobs:
   assign_one_project:
@@ -16,8 +12,11 @@ jobs:
     name: Assign to Drupal
     steps:
     - name: Assign NEW issues and NEW pull requests to [project] project
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        ORGANIZATION: aces-wms
+        PROJECT_NUMBER: 1
       uses: srggrs/assign-one-project-github-action@1.2.1
-      if: github.event.action == 'opened'
       with:
         project: 'https://github.com/orgs/aces-wms/projects/1'
         column_name: 'No Status'
