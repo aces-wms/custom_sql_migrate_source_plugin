@@ -63,7 +63,7 @@ process:
     source: author
   field_if_meda_featured_image:
     plugin: migration_lookup
-    migration: aces_news_files
+    migration: aces_news_media
 destination:
   plugin: entity:node
   default_bundle: news
