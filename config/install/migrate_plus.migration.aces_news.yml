@@ -65,8 +65,10 @@ process:
     plugin: migration_lookup
     migration: aces_news_files
     source: fid
-    title: image_title
-    alt: image_alt
+  field_aces_news_image_alt:
+    plugin: migration_lookup
+    migration: aces_news_files
+    source: field_news_featured_image_alt
 destination:
   plugin: entity:node
   default_bundle: news
