@@ -18,8 +18,16 @@ function aces_news_migration_install() {
 function aces_news_migration_uninstall() {
   \Drupal::configFactory()->getEditable('core.entity_form_display.node.news.default')->delete();
   \Drupal::configFactory()->getEditable('core.entity_view_display.node.news.default')->delete();
+  \Drupal::configFactory()->getEditable('crop.type.aces_news_landscape')->delete();
+  \Drupal::configFactory()->getEditable('crop.type.aces_news_portrait')->delete();
+  \Drupal::configFactory()->getEditable('field.field.node.news.field_aces_image_select')->delete();
   \Drupal::configFactory()->getEditable('field.field.node.news.field_aces_news_image')->delete();
+  \Drupal::configFactory()->getEditable('field.field.node.news.field_aces_news_image_portrait')->delete();
+  \Drupal::configFactory()->getEditable('field.storage.node.field_aces_image_select')->delete();
   \Drupal::configFactory()->getEditable('field.storage.node.field_aces_news_image')->delete();
+  \Drupal::configFactory()->getEditable('field.storage.node.field_aces_image_select')->delete();
+  \Drupal::configFactory()->getEditable('image.style.news_landscape')->delete();
+  \Drupal::configFactory()->getEditable('image.style.news_portrait')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news_files')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news_media')->delete();
