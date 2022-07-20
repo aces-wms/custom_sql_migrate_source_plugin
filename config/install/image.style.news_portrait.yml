@@ -1,0 +1,18 @@
+uuid: 7e82ef77-05c7-4402-bb06-7dd29a0d64fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.aces_news_portrait
+  module:
+    - crop
+name: news_portrait
+label: 'News Portrait (2:3)'
+effects:
+  c3903a52-086d-42cf-8150-7b0c215c94df:
+    uuid: c3903a52-086d-42cf-8150-7b0c215c94df
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: aces_news_portrait
+      automatic_crop_provider: null

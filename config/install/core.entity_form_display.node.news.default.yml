@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.field_aces_image_select
     - field.field.node.news.field_aces_news_image
+    - field.field.node.news.field_aces_news_image_portrait
     - field.field.node.news.field_if_author
     - field.field.node.news.field_if_date
     - field.field.node.news.field_if_meda_featured_image
@@ -16,14 +18,15 @@ dependencies:
     - image.style.thumbnail
     - node.type.news
   module:
+    - conditional_fields
     - datetime
-    - image
+    - image_widget_crop
     - link
     - paragraphs
     - path
     - text
 _core:
-  default_config_hash: YJ-8cs6d8cE-ze7XDsx1J1Il9VF_ilCpyuKXvqH2IaY
+  default_config_hash: YlbbP3wNzuuMeK7fS85sMuYvNqRQEwtTZQ_KNZioQ2o
 id: node.news.default
 targetEntityType: node
 bundle: news
@@ -45,14 +48,80 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_aces_news_image:
-    type: image_image
+  field_aces_image_select:
+    type: options_select
     weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_aces_news_image:
+    type: image_widget_crop
+    weight: 16
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
-    third_party_settings: {  }
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - aces_news_landscape
+      crop_types_required:
+        - aces_news_landscape
+      warn_multiple_usages: true
+      show_crop_area: false
+      show_default_crop: true
+    third_party_settings:
+      conditional_fields:
+        229539ec-31c4-4a09-a8ef-bde88a975570:
+          entity_type: node
+          bundle: news
+          dependee: field_aces_image_select
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: landscape
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_aces_news_image_portrait:
+    type: image_widget_crop
+    weight: 17
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      crop_preview_image_style: crop_thumbnail
+      crop_list:
+        - aces_news_portrait
+      crop_types_required:
+        - aces_news_portrait
+      warn_multiple_usages: true
+      show_crop_area: false
+      show_default_crop: true
+    third_party_settings:
+      conditional_fields:
+        f6b8183a-c713-493b-b6f2-14825f9409dc:
+          entity_type: node
+          bundle: news
+          dependee: field_aces_image_select
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: portrait
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_if_author:
     type: string_textfield
     weight: 2

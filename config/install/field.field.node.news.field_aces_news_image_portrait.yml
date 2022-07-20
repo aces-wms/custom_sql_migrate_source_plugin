@@ -1,19 +1,17 @@
-uuid: 7c2e3624-584e-46df-9b88-a52ecfca9846
+uuid: 75d58206-4c99-443e-bb51-40ac6e2e7bde
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_aces_news_image
+    - field.storage.node.field_aces_news_image_portrait
     - node.type.news
   module:
     - image
-_core:
-  default_config_hash: l2lICWYuCGXvf-THSRhBEBs1yLMQnvAXoZRM_-QphLM
-id: node.news.field_aces_news_image
-field_name: field_aces_news_image
+id: node.news.field_aces_news_image_portrait
+field_name: field_aces_news_image_portrait
 entity_type: node
 bundle: news
-label: 'Landscape Image'
+label: 'Portrait Image'
 description: ''
 required: true
 translatable: false
@@ -26,7 +24,7 @@ settings:
   file_extensions: 'png gif jpg jpeg'
   max_filesize: 5MB
   max_resolution: ''
-  min_resolution: 500x350
+  min_resolution: 250x375
   alt_field: true
   alt_field_required: true
   title_field: true

@@ -1,0 +1,12 @@
+uuid: be60b973-c321-47bf-b3fe-0ac7c077ade1
+langcode: en
+status: true
+dependencies: {  }
+label: 'ACES News Landscape'
+id: aces_news_landscape
+description: ''
+aspect_ratio: '3:2'
+soft_limit_width: 750
+soft_limit_height: 500
+hard_limit_width: 375
+hard_limit_height: 250
