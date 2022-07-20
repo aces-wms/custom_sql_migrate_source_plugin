@@ -2,11 +2,13 @@ uuid: 93a41b86-af75-427a-8f94-8ca8a4817e7d
 langcode: en
 status: true
 dependencies: {  }
+_core:
+  default_config_hash: mSeyUyN5wz_5qB044f71vdLZAxrwXISYFt9fP1Wn-mg
 label: 'ACES News Portrait'
 id: aces_news_portrait
 description: ''
-aspect_ratio: '2:3'
-soft_limit_width: 500
-soft_limit_height: 750
-hard_limit_width: 250
-hard_limit_height: 375
+aspect_ratio: '3:4'
+soft_limit_width: 375
+soft_limit_height: 500
+hard_limit_width: 225
+hard_limit_height: 300

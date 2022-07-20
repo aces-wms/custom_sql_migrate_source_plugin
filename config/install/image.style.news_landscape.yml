@@ -6,6 +6,8 @@ dependencies:
     - crop.type.aces_news_landscape
   module:
     - crop
+_core:
+  default_config_hash: Gwx7f-Zdo-HRrZ4qtnzso1Yl0TGm0epJMGM8o6PG_yI
 name: news_landscape
 label: 'News Landscape (3:2)'
 effects:
