@@ -61,7 +61,7 @@ process:
   field_if_author:
     plugin: get
     source: author
-  field_if_portrait_image:
+  field_if_landscape_image:
     plugin: migration_lookup
     migration: aces_news_files
     source: fid
