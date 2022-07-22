@@ -1,11 +1,9 @@
-uuid: be60b973-c321-47bf-b3fe-0ac7c077ade1
+uuid: f0e6298d-dbfe-42e0-a865-af8d04a3f51f
 langcode: en
 status: true
 dependencies: {  }
-_core:
-  default_config_hash: V1SrMc_vORX96Z2E_Pz49vXT8TniAvgU1ZEUMrnStrA
-id: aces_news_landscape
-label: 'ACES News Landscape'
+label: 'News Landscape (3:2)'
+id: news_landscape
 description: ''
 aspect_ratio: '3:2'
 soft_limit_width: 750

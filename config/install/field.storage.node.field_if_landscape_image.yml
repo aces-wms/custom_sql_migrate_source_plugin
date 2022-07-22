@@ -1,4 +1,4 @@
-uuid: ef1d4b18-bce4-4b69-a308-5f83a106f801
+uuid: 6350aa13-9bed-4cd1-b2ff-1c0e607a5c2b
 langcode: en
 status: true
 dependencies:
@@ -6,10 +6,8 @@ dependencies:
     - file
     - image
     - node
-_core:
-  default_config_hash: 6fllTGWG9N8F1V4h9pSN-bZfSdG5VywZJbRUIYXQGIo
-id: node.field_aces_news_image
-field_name: field_aces_news_image
+id: node.field_if_landscape_image
+field_name: field_if_landscape_image
 entity_type: node
 type: image
 settings:

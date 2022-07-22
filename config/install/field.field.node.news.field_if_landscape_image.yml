@@ -1,16 +1,14 @@
-uuid: 7c2e3624-584e-46df-9b88-a52ecfca9846
+uuid: d28c9bbf-cc69-4311-a719-6037a2b42518
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_aces_news_image
+    - field.storage.node.field_if_landscape_image
     - node.type.news
   module:
     - image
-_core:
-  default_config_hash: l2lICWYuCGXvf-THSRhBEBs1yLMQnvAXoZRM_-QphLM
-id: node.news.field_aces_news_image
-field_name: field_aces_news_image
+id: node.news.field_if_landscape_image
+field_name: field_if_landscape_image
 entity_type: node
 bundle: news
 label: 'Landscape Image'

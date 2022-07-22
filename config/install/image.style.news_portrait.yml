@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - crop.type.aces_news_portrait
+    - crop.type.news_portrait
   module:
     - crop
 _core:
@@ -16,5 +16,5 @@ effects:
     id: crop_crop
     weight: 1
     data:
-      crop_type: aces_news_portrait
+      crop_type: news_portrait
       automatic_crop_provider: null

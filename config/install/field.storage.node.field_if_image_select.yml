@@ -1,12 +1,12 @@
-uuid: dbf0f79a-01b8-45ba-9a93-28fd0d8f3689
+uuid: aee97823-348a-4234-9208-a6831976d6fa
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - options
-id: node.field_aces_image_select
-field_name: field_aces_image_select
+id: node.field_if_image_select
+field_name: field_if_image_select
 entity_type: node
 type: list_string
 settings:

@@ -1,4 +1,4 @@
-uuid: 5b508538-0197-4a72-b463-67d6940e0851
+uuid: 82e9aea9-0227-4617-b831-fa323425a7ca
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - file
     - image
     - node
-id: node.field_aces_news_image_portrait
-field_name: field_aces_news_image_portrait
+id: node.field_if_portrait_image
+field_name: field_if_portrait_image
 entity_type: node
 type: image
 settings:
