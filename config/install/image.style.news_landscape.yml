@@ -1,0 +1,20 @@
+uuid: af36c272-9aee-46d5-9d19-3f56cdaf5cad
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.news_landscape
+  module:
+    - crop
+_core:
+  default_config_hash: Gwx7f-Zdo-HRrZ4qtnzso1Yl0TGm0epJMGM8o6PG_yI
+name: news_landscape
+label: 'News Landscape (3:2)'
+effects:
+  34ec003f-b291-48c3-8dd4-37fe7d133a18:
+    uuid: 34ec003f-b291-48c3-8dd4-37fe7d133a18
+    id: crop_crop
+    weight: 2
+    data:
+      crop_type: news_landscape
+      automatic_crop_provider: null

@@ -1,0 +1,20 @@
+uuid: 7e82ef77-05c7-4402-bb06-7dd29a0d64fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.news_portrait
+  module:
+    - crop
+_core:
+  default_config_hash: HOR1eGDAZ2MKdtAUhvjj3Q8M_ljzq-0QrbTVd-2HpFU
+name: news_portrait
+label: 'News Portrait (3:4)'
+effects:
+  c3903a52-086d-42cf-8150-7b0c215c94df:
+    uuid: c3903a52-086d-42cf-8150-7b0c215c94df
+    id: crop_crop
+    weight: 1
+    data:
+      crop_type: news_portrait
+      automatic_crop_provider: null
