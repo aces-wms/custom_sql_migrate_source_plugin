@@ -61,10 +61,9 @@ process:
   field_if_author:
     plugin: get
     source: author
-  field_if_landscape_image:
-    plugin: migration_lookup
-    migration: aces_news_files
-    source: fid
+  field_if_landscape_image/target_id: fid
+  field_if_landscape_image/alt: image_alt
+  field_if_landscape_image/title: image_title
 destination:
   plugin: entity:node
   default_bundle: news
