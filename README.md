@@ -37,3 +37,16 @@ Migration information:
 
 User creation:
 https://www.drupal.org/node/1349632
+
+## Installation with composer
+<ol>
+<li>Add the custom module</li><br/>
+```
+cd ~/illinois_framework/
+
+composer config repositories.aces-news-migration '{"type": "vcs", "url": "https://github.com/aces-wms/aces-news-migration.git"}'
+    
+composer require aces-wms/aces-news-migration:^1.0
+
+```
+
