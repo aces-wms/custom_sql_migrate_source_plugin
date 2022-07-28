@@ -50,4 +50,7 @@ composer config repositories.aces-news-migration '{"type": "vcs", "url": "https:
 composer require aces-wms/aces-news-migration:^1.0
 
 ```
-
+<li>Add custom module install location to configuration extra.installer-paths</li>
+"docroot/modules/custom/{$name}": [
+      "type:drupal-custom-module"
+ ],
