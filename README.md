@@ -54,3 +54,11 @@ composer require aces-wms/aces-news-migration:^1.0
 "docroot/modules/custom/{$name}": [
       "type:drupal-custom-module"
  ],
+
+<li>configuration changes before install</li>
+
+```
+drush config-del core.entity_form_display.node.news.default
+drush config-del core.entity_view_display.node.news.default
+drush config-del pathauto.pattern.news_article
+```
