@@ -16,8 +16,6 @@ function aces_news_migration_install() {
  * Implements hook_uninstall().
  */
 function aces_news_migration_uninstall() {
-  \Drupal::configFactory()->getEditable('core.entity_form_display.node.news.default')->delete();
-  \Drupal::configFactory()->getEditable('core.entity_view_display.node.news.default')->delete();
   \Drupal::configFactory()->getEditable('crop.type.news_landscape')->delete();
   \Drupal::configFactory()->getEditable('crop.type.news_portrait')->delete();
   \Drupal::configFactory()->getEditable('field.field.node.news.field_if_image_select')->delete();
@@ -33,8 +31,6 @@ function aces_news_migration_uninstall() {
   \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news_media')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration.aces_news_term_migration')->delete();
   \Drupal::configFactory()->getEditable('migrate_plus.migration_group.aces_news')->delete();
-  \Drupal::configFactory()->getEditable('node.news.field_tags')->delete();
-  \Drupal::configFactory()->getEditable('pathauto.pattern.news_article')->delete();
   \Drupal::configFactory()->getEditable('taxonomy.vocabulary.aces')->delete();
   drupal_flush_all_caches();
   \Drupal::messenger()->addStatus(__FUNCTION__);
