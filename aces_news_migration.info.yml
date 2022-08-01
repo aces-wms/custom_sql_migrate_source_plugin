@@ -12,4 +12,3 @@ dependencies:
   - custom_sql_migrate_source_plugin
   - migrate_process_extra
   - migrate_file
-  - drupal:conditional_fields
