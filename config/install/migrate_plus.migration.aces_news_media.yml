@@ -6,6 +6,7 @@ migration_group: aces_news
 dependencies:
   enforced:
     module:
+      - aces_news
       - aces_news_migration
   required:
     - aces_news_files

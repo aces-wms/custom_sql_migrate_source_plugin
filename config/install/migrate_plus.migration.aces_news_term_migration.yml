@@ -17,4 +17,5 @@ destination:
 dependencies:
   enforced:
     module:
+      - aces_news
       - aces_news_migration
