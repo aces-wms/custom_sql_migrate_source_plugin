@@ -4,7 +4,7 @@ description: Migrate ACES News to Drupal 9
 package: Custom
 core: 8.x
 core_version_requirement: ^8 || ^9
-version: 1.0.0-alpha5
+version: 1.0.0-alpha6
 dependencies:
   - drupal:migrate
   - migrate_plus:migrate_plus
