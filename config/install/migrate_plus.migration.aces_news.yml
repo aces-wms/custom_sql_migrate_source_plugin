@@ -71,11 +71,9 @@ process:
   field_if_landscape_image/target_id: fid
   field_if_landscape_image/alt: image_alt
   field_if_landscape_image/title: image_title
-  field_if_story_source:
 destination:
   plugin: entity:node
   default_bundle: news
-
 
 #field_if_sponser:
 #field_if_related_people:
