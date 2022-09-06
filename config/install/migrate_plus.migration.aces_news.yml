@@ -4,6 +4,7 @@ migration_group: aces_news
 migration_dependencies:
   required:
     - aces_news_term_migration
+    - aces_news_files
 dependencies:
   enforced:
     module:
@@ -41,11 +42,15 @@ process:
     plugin: format_date
     from_format: 'U'
     to_format: 'U'
+    from_timezone: 'America/Chicago'
+    to_timezone: 'America/Chicago'
     source: created
   changed:
     plugin: format_date
     from_format: 'U'
     to_format: 'U'
+    from_timezone: 'America/Chicago'
+    to_timezone: 'America/Chicago'
     source: changed
   status:
     plugin: get
@@ -54,6 +59,8 @@ process:
     plugin: format_date
     from_format: 'U'
     to_format: 'Y-m-d\TH:i:s'
+    from_timezone: 'America/Chicago'
+    to_timezone: 'America/Chicago'
     source: created
   field_tags:
     plugin: explode
@@ -65,6 +72,7 @@ process:
   field_if_landscape_image/target_id: fid
   field_if_landscape_image/alt: image_alt
   field_if_landscape_image/title: image_title
+  field_if_story_source:
 destination:
   plugin: entity:node
   default_bundle: news
