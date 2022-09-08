@@ -14,7 +14,7 @@ source:
   key: migrate
   keys:
     - fid
-  sql_query: "SELECT ln.nid as nid, fi.field_news_featured_image_target_id AS fid, fi.entity_id, fi.field_news_featured_image_alt, fi.field_news_featured_image_title, fm.uri, fm.filename, fm.filemime, fm.filesize, fm.status, fm.created, fm.changed, fm.uid
+  sql_query: "SELECT ln.nid as nid, fi.field_news_featured_image_target_id AS fid, fi.entity_id, fi.field_news_featured_image_alt AS alt, fi.field_news_featured_image_title AS title, fm.uri, fm.filename, fm.filemime, fm.filesize, fm.status, fm.created, fm.changed, fm.uid
               FROM node ln
               LEFT JOIN node__field_news_featured_image fi ON fi.entity_id = ln.nid
               LEFT JOIN file_managed fm ON fi.field_news_featured_image_target_id = fm.fid
@@ -27,11 +27,11 @@ source:
     # represents the fully qualified path relative to which URIs in the files
     # table are specified, and must end with a /. See source_full_path
     # configuration in this migration's process pipeline as an example.
-    source_base_path: 'http://copy.aces.illinois.edu/sites/default/files/news'
+    source_base_path: 'http://copy.aces.illinois.edu/sites/default/files/news/'
 process:
   # If you are using this file to build a custom migration consider removing
   # the fid field to allow incremental migrations.
-  fid: fid
+  #  fid: fid
   filename: filename
   source_full_path:
     -
