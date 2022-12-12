@@ -1,6 +1,6 @@
 id: ace_term_migration
 label: 'ACE term migration'
-migration_group: aces_news
+migration_group: ace_taxonomy
 source:
   plugin: custom_sql_query
   key: migrate
