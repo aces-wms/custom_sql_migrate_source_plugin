@@ -3,10 +3,10 @@ label: 'ACES News term migration'
 migration_group: aces_news
 source:
   plugin: custom_sql_query
-  key: migrate
+  key: taxonomy
   keys:
     - tid
-  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM old_01b3d4taxonomy_term_field_data fd WHERE fd.vid='aces'"
+  sql_query: "SELECT fd.tid, fd.vid, fd.name, fd.status FROM taxonomy_term_field_data fd WHERE fd.vid='aces'"
 process:
   tid: tid
   name: name
