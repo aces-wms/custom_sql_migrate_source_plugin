@@ -1,13 +1,7 @@
-name: ACES News Migration
+name: Custom SQL Migrate Source Plugin Placeholder
 type: module
-description: Migrate ACES News to Drupal 9
+description: Install this empy module so it can be uninstalled
 package: Custom
-core: 8.x
-core_version_requirement: ^8 || ^9
-version: 1.0.0-alpha5
-dependencies:
-  - drupal:migrate
-  - migrate_plus:migrate_plus
-  - migrate_tools
-  - custom_sql_migrate_source_plugin
-  - migrate_file
+core: 10.x
+core_version_requirement: ^10
+version: 1.1
