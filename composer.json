@@ -1,5 +1,5 @@
 {
-    "name": "aces-wms/aces-news-migration",
+    "name": "aces-wms/custom_sql_migrate_source_plugin",
     "description": "Migration module for the College of ACES News",
     "type": "drupal-custom-module",
     "license": "GPL-2.0-or-later",
@@ -10,8 +10,8 @@
     "minimum-stability": "dev",
     "authors": [
         {
-            "name": "wrg20",
-            "email": "wrg1025@gmail.com",
+            "name": "dcross1",
+            "email": "dcross1@illinois.edu",
             "homepage": "https://www.drupal.org/u/wrg20",
             "role": "Maintainer"
         }
