@@ -4,4 +4,4 @@ description: Install this empy module so it can be uninstalled
 package: Custom
 core: 10.x
 core_version_requirement: ^10
-version: 1.2
+version: 1.3
